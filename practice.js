@@ -7,33 +7,33 @@ let fAttack = 10
 let hHealth = 90
 let hAttack = 12
 
-function startGame () {
-    hHealth = 90
+function startGame() {
     for (let i = 0; i < fighters.length; i ++) {
         if(hHealth > 0) {
-            let nextUp = fighters[i]
+            //notice starting a new game wont do anything unless we reset the health of the enemy each time
             fHealth = 50
+            hHealth = hHealth + 10
+            let nextUp = fighters[i]
             fight(nextUp)
-        } else {
-            break;
+            console.log(`Round ${i + 1}`)
         }
     }
     endGame()
 }
 
-function fight (fighter) {
+function fight(fighter) {
     while(hHealth > 0 && fHealth > 0) {
         hHealth = hHealth - fAttack
-        console.log(`Freyja health: ${hHealth}`)
+        console.log(`Freja health: ${hHealth}`)
         fHealth = fHealth - hAttack
         console.log(`${fighter} health: ${fHealth}`)
-        if(fHealth < 0) {
-            console.log(`${fighter} defeated`)
+        if(hHealth <= 0) {
+            break;
         }
     }
 }
 
-function endGame () {
+function endGame() {
     inquirer.prompt({
         type: 'text',
         name: 'replay',
@@ -42,7 +42,7 @@ function endGame () {
     .then(({replay}) => {
         if(replay == true) {
             startGame()
-        } 
+        }
     })
 }
 
