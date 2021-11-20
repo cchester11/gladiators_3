@@ -1,3 +1,5 @@
+// convert to a game in which before each attack the player is asked to make a choice to continue or flee to next opponent. if flees than loses attack strength but if wins gains attack strength
+
 const inquirer = require('inquirer')
 
 const fighters = ['Gul', 'Brok', 'Tik']

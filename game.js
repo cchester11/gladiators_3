@@ -60,6 +60,7 @@ function endGame() {
     })
         .then(({ replay }) => {
             if (replay == true) {
+                playerHealth = 90
                 startGame()
             }
         })
