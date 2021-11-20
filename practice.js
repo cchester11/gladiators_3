@@ -1,49 +1,73 @@
-// convert to a game in which before each attack the player is asked to make a choice to continue or flee to next opponent. if flees than loses attack strength but if wins gains attack strength
-
+// create a new version in which the player is prompted after each hit to run or flee
+// if players flees he loses attack strength
+// if player wins he gians attack strength
 const inquirer = require('inquirer')
 
-const fighters = ['Gul', 'Brok', 'Tik']
-let fHealth = 50
-let fAttack = 10
+const consArr = ['b','c','d', 'f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','z']
+const vowArr = ['a', 'e', 'i', 'o', 'u', 'y']
 
-let hHealth = 90
-let hAttack = 12
+const vowArrMath = [
+    Math.floor(Math.random() * 10) ,  Math.floor(Math.random() + 15) , Math.floor(Math.random() + 17) , Math.floor(Math.random() * 5)
+]
 
-function startGame() {
-    for (let i = 0; i < fighters.length; i ++) {
-        if(hHealth > 0) {
-            //notice starting a new game wont do anything unless we reset the health of the enemy each time
-            fHealth = 50
-            hHealth = hHealth + 10
-            let nextUp = fighters[i]
-            fight(nextUp)
-            console.log(`Round ${i + 1}`)
+const consArrMath = [
+    Math.floor(Math.random() * 10) , Math.floor(Math.random() + 15) , Math.floor(Math.random() + 17) , Math.floor(Math.random() * 5)
+]
+
+let Freyja = 'Freyja'
+let playerHealth = 90
+let playerAttack = 10
+let playerPoints = 50
+
+let enemyNames = []
+let enemyName = ''
+
+const enemyNameFunc = function () {
+    for(let i = 0; i < 5; i ++) {
+        for(let i = 0; i < 5; i ++) {
+
+            if(i === 0 || i === 2 || i === 4) {
+                enemyName += vowArr[Math.floor(Math.random() * vowArrMath.length)]
+            }
+    
+            if(i === 1 || i === 3) {
+                enemyName += consArr[Math.floor(Math.random() * consArrMath.length)]
+            }
+            
         }
+
+        enemyNames.push(enemyName)
+        enemyName = ''
     }
-    endGame()
+
+    console.log(enemyNames)
 }
 
-function fight(fighter) {
-    while(hHealth > 0 && fHealth > 0) {
-        hHealth = hHealth - fAttack
-        console.log(`Freja health: ${hHealth}`)
-        fHealth = fHealth - hAttack
-        console.log(`${fighter} health: ${fHealth}`)
-        if(hHealth <= 0) {
-            break;
-        }
-    }
-}
+enemyNameFunc()
 
-function endGame() {
+const startGame = () => {
     inquirer.prompt({
-        type: 'text',
-        name: 'replay',
-        message: 'Reply 1 to run again or 0 to quit'
+        type: 'confirm',
+        name: 'start_game',
+        message: 'Would you like to play gladiators',
     })
-    .then(({replay}) => {
-        if(replay == true) {
-            startGame()
+    .then(({ start_game }) => {
+        if(start_game) {
+            for(let i = 0; i < enemyNames; i ++) {
+                if(playerHealth > 0) {
+                    console.log(`Your champion ${Freyja} has ${playerHealth} health points left! She will not be slain!`)
+
+                    let nextFighter = enemyNames[i]
+
+                    playerAttack += 2
+
+                    fight(nextFighter)
+                } else {
+                    console.log('Your champion has been defeated')
+
+                    endGame()
+                }
+            }
         }
     })
 }
