@@ -24,15 +24,19 @@ const startGame = () => {
             if (start_game == true) {
                 for (let i = 0; i < enemyNames.length; i++) {
                     if (playerHealth > 0) {
-                        if (i > 0) {
-                            playerHealth += 20
-                            
-                            console.log(`Your champion ${Freyja} has ${playerHealth} health points left! She will not be slain!`)
+                        if(i === 0) {
+                            let nextFighter = enemyNames[i]
+                            fight(nextFighter, playerHealth)
                         }
+                        if (i > 0) {
+                            playerHealth += 10
 
-                        let nextFighter = enemyNames[i]
+                            console.log(`Your champion ${Freyja} has ${playerHealth} health points left! She will not be slain!`)
 
-                        fight(nextFighter, playerHealth)
+                            let nextFighter = enemyNames[i]
+
+                            fight(nextFighter, playerHealth)
+                        } 
                     } else {
                         console.log('Your champion has been defeated')
 

@@ -1,13 +1,13 @@
 const inquirer = require('inquirer')
 
 const adj1Array = ['hefty', 'furious', 'fiery', 'reddened']
-const adj1 = 1 + Math.floor(Math.random() * adj1Array.length)
+const adj1 = adj1Array[Math.floor(Math.random() * adj1Array.length)]
 const verbArray = ['leaped', 'twisted', 'formed']
-const verb = 1 + Math.floor(Math.random() * verbArray.length)
+const verb = verbArray[Math.floor(Math.random() * verbArray.length)]
 const prepArray = ['beneath', 'under', 'within']
-const preposition = 1 + Math.floor(Math.random() * prepArray.length)
+const preposition = prepArray[Math.floor(Math.random() * prepArray.length)]
 const nounArray = ['bush', 'maple tree', 'foggy mist', 'black bog']
-const noun = 1 + Math.floor(Math.random() * nounArray.length)
+const noun = nounArray[Math.floor(Math.random() * nounArray.length)]
 
 const playerAttackBonus = [1, 2, 3, 4, 5]
 let playerAttack = 5 + Math.floor(Math.random() * playerAttackBonus.length)
@@ -15,7 +15,7 @@ let eHealth = 59 + Math.floor(Math.random() + 5)
 let enemyAttack = 7
 
 const fight = (fighter, pHealth) => {
-    console.log(`${fighter}, a ${adj1} opponent, ${verb} out from ${preposition} a ${noun}`)
+    console.log(`${fighter}! A ${adj1} opponent ${verb} out from ${preposition} a ${noun}`)
 
     inquirer.prompt({
         type: 'input',
