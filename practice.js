@@ -2,17 +2,7 @@
 // if players flees he loses attack strength
 // if player wins he gians attack strength
 const inquirer = require('inquirer')
-// const enemynameFunc = require('./utils/enemynameFunc')
-
-// for name generation
-const consArr = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z']
-const vowArr = ['a', 'e', 'i', 'o', 'u', 'y']
-const vowArrMath = [
-    Math.floor(Math.random() * 10), Math.floor(Math.random() + 15), Math.floor(Math.random() + 17), Math.floor(Math.random() * 5)
-]
-const consArrMath = [
-    Math.floor(Math.random() * 10), Math.floor(Math.random() + 15), Math.floor(Math.random() + 17), Math.floor(Math.random() * 5)
-]
+const enemyNameFunc = require('./utils/enemynameFunc')
 
 const adj1Array = ['hefty', 'furious', 'fiery', 'reddened']
 const adj1 = 1 + Math.floor(Math.random() * adj1Array.length)
@@ -34,33 +24,10 @@ let playerAttack = 5 + Math.floor(Math.random() * playerAttackBonus.length)
 
 // enemy 
 let enemyNames = []
-let enemyName = ''
 let enemyHealth = 40
 let enemyAttack = 7
 
-
-const enemyNameFunc = function () {
-    for (let i = 0; i < 5; i++) {
-        for (let i = 0; i < 5; i++) {
-
-            if (i === 0 || i === 2 || i === 4) {
-                enemyName += vowArr[Math.floor(Math.random() * vowArrMath.length)]
-            }
-
-            if (i === 1 || i === 3) {
-                enemyName += consArr[Math.floor(Math.random() * consArrMath.length)]
-            }
-
-        }
-
-        enemyNames.push(enemyName)
-        enemyName = ''
-    }
-
-    console.log(enemyNames)
-}
-
-enemyNameFunc()
+enemyNameFunc(enemyNames)
 
 const startGame = () => {
     inquirer.prompt({
