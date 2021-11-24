@@ -26,6 +26,7 @@ const startGame = () => {
                     if (playerHealth > 0) {
                         if(i === 0) {
                             let nextFighter = enemyNames[i]
+                            
                             fight(nextFighter, playerHealth)
                         }
                         if (i > 0) {
@@ -38,9 +39,7 @@ const startGame = () => {
                             fight(nextFighter, playerHealth)
                         } 
                     } else {
-                        console.log('Your champion has been defeated')
-
-                        endGame()
+                        endGame(startGame())
                     }
                 }
             }

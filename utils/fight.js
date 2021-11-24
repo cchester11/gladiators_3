@@ -17,13 +17,13 @@ let enemyAttack = 7
 const fight = (fighter, pHealth) => {
     console.log(`${fighter}! A ${adj1} opponent ${verb} out from ${preposition} a ${noun}`)
 
-    inquirer.prompt({
+    const attackPrompt = inquirer.prompt({
         type: 'input',
         name: 'attack_flee',
         message: 'Will you attack the enemy or flee the scene? Reply "attack" to attack or "flee" to flee.'
     })
-        .then(({ attack_flee }) => {
-            if (attack_flee === 'attack') {
+        .then(() => {
+            if (attackPrompt === 'attack') {
                 while (pHealth > 0 || eHealth > 0) {
                     eHealth = eHealth - playerAttack
 
@@ -31,6 +31,7 @@ const fight = (fighter, pHealth) => {
 
                     if(eHealth <= 0) {
                         console.log(`The ${adj1} ${fighter} has been defeated!`)
+                        break;
                     }
 
                     pHealth = pHealth - enemyAttack
