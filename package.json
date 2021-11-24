@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "game": "node game.js",
-    "practice": "node startGame.js"
+    "start_game": "node startGame.js"
   },
   "author": "Charles Chester",
   "license": "ISC",

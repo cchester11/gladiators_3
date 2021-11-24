@@ -11,7 +11,7 @@ let playerHealth = 90
 // enemy 
 let enemyNames = []
 
-
+// enemy names generated
 enemyNameFunc(enemyNames)
 
 const startGame = () => {
@@ -24,11 +24,6 @@ const startGame = () => {
             if (start_game == true) {
                 for (let i = 0; i < enemyNames.length; i++) {
                     if (playerHealth > 0) {
-                        if(i === 0) {
-                            let nextFighter = enemyNames[i]
-                            
-                            fight(nextFighter, playerHealth)
-                        }
                         if (i > 0) {
                             playerHealth += 10
 
@@ -38,6 +33,9 @@ const startGame = () => {
 
                             fight(nextFighter, playerHealth)
                         } 
+                        let nextFighter = enemyNames[i]
+                            
+                        fight(nextFighter, playerHealth)
                     } else {
                         endGame(startGame())
                     }
