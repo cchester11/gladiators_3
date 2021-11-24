@@ -4,13 +4,16 @@
   "description": "node runtime game",
   "main": "game.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node game.js",
+    "test": "jest",
+    "game": "node game.js",
     "practice": "node practice.js"
   },
   "author": "Charles Chester",
   "license": "ISC",
   "dependencies": {
     "inquirer": "^8.1.2"
+  },
+  "devDependencies": {
+    "jest": "^27.3.1"
   }
 }

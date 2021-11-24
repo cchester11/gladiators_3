@@ -2,29 +2,42 @@
 // if players flees he loses attack strength
 // if player wins he gians attack strength
 const inquirer = require('inquirer')
+// const enemynameFunc = require('./utils/enemynameFunc')
 
+// for name generation
 const consArr = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z']
 const vowArr = ['a', 'e', 'i', 'o', 'u', 'y']
-
-const playerAttackBonus = [1, 2, 3, 4, 5]
-
 const vowArrMath = [
     Math.floor(Math.random() * 10), Math.floor(Math.random() + 15), Math.floor(Math.random() + 17), Math.floor(Math.random() * 5)
 ]
-
 const consArrMath = [
     Math.floor(Math.random() * 10), Math.floor(Math.random() + 15), Math.floor(Math.random() + 17), Math.floor(Math.random() * 5)
 ]
 
+const adj1Array = ['hefty', 'furious', 'fiery', 'reddened']
+const adj1 = 1 + Math.floor(Math.random() * adj1Array.length)
+
+const verbArray = ['leaped', 'twisted', 'formed']
+const verb = 1 + Math.floor(Math.random() * verbArray.length)
+
+const prepArray = ['beneath', 'under', 'within']
+const preposition = 1 + Math.floor(Math.random() * prepArray.length)
+
+const nounArray = ['bush', 'maple tree', 'foggy mist', 'black bog']
+const noun = 1 + Math.floor(Math.random() * nounArray.length)
+
+// player 
 let Freyja = 'Freyja'
 let playerHealth = 90
+const playerAttackBonus = [1, 2, 3, 4, 5]
 let playerAttack = 5 + Math.floor(Math.random() * playerAttackBonus.length)
 
+// enemy 
 let enemyNames = []
 let enemyName = ''
-
 let enemyHealth = 40
 let enemyAttack = 7
+
 
 const enemyNameFunc = function () {
     for (let i = 0; i < 5; i++) {
@@ -57,14 +70,13 @@ const startGame = () => {
     })
         .then(({ start_game }) => {
             if (start_game == true) {
-                for (let i = 0; i < enemyNames; i++) {
+                for (let i = 0; i < enemyNames.length; i++) {
                     if (playerHealth > 0) {
                         if (i > 0) {
                             playerHealth += 20
                             playerAttack += 1
+                            console.log(`Your champion ${Freyja} has ${playerHealth} health points left! She will not be slain!`)
                         }
-
-                        console.log(`Your champion ${Freyja} has ${playerHealth} health points left! She will not be slain!`)
 
                         let nextFighter = enemyNames[i]
 
@@ -80,7 +92,7 @@ const startGame = () => {
 }
 
 const fight = (fighter) => {
-    console.log(`${fighter}, a ${adj1} opponent, ${verb} out from ${prepositon} a ${noun}`)
+    console.log(`${fighter}, a ${adj1} opponent, ${verb} out from ${preposition} a ${noun}`)
 
     inquirer.prompt({
         type: 'input',
