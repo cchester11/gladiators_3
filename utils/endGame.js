@@ -1,6 +1,6 @@
 const inquirer = require('inquirer')
 
-const endGame = (startFunction) => {
+function endGame (start) {
     inquirer.prompt({
         type: 'confirm',
         name: 'play_again',
@@ -8,11 +8,11 @@ const endGame = (startFunction) => {
     })
     .then(answer => {
         if(answer == true) {
-            startFunction
+            start
         } else {
             console.log('Scared or what?')
         }
     })
 }
 
-module.exports = endGame()
+module.exports = endGame;

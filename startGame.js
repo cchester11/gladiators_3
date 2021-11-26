@@ -15,7 +15,7 @@ let enemyNames = []
 // enemy names generated
 enemyNameFunc(enemyNames)
 
-const startGame = () => {
+function startGame () {
     inquirer.prompt({
         type: 'confirm',
         name: 'start_game',
@@ -40,7 +40,7 @@ const startGame = () => {
                             fight(nextFighter, playerHealth)
                         }
                     } else {
-                        endGame(startGame())
+                        endGame(startGame)
                     }
                 }
             }

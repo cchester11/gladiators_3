@@ -1,6 +1,6 @@
 const inquirer = require('inquirer')
 
-const fight = (fighter, pHealth) => {
+function fight(fighter, pHealth) {
     const adj1Array = ['hefty', 'furious', 'fiery', 'reddened']
     const adj1 = adj1Array[Math.floor(Math.random() * adj1Array.length)]
     const verbArray = ['leaped', 'twisted', 'formed']
@@ -27,14 +27,13 @@ const fight = (fighter, pHealth) => {
     })
         .then(function ({ attack_flee }) {
                 if (attack_flee == true) {
-                    while (pHealth > 0 || eHealth > 0) {
+                    while (pHealth > 0 && eHealth > 0) {
                         eHealth = eHealth - playerAttack
 
                         console.log(`${fighter} took ${playerAttack} points of damage! You slash at him with your sword!`)
 
                         if (eHealth <= 0) {
                             console.log(`The ${adj1} ${fighter} has been defeated!`)
-                            break
                         }
 
                         pHealth = pHealth - enemyAttack
@@ -43,7 +42,7 @@ const fight = (fighter, pHealth) => {
 
                         if (pHealth <= 0) {
                             console.log('Your champion Freyja ascends to Valhalla where she awaits an eternity of glorious battles and infitely full jugs of wine')
-                            break
+                            break;
                         }
                     }
                 }
