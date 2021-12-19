@@ -39,7 +39,8 @@ function fight(fighter, pHealth) {
                         pHealth = pHealth - enemyAttack
 
                         console.log(`You took 7 points of damage! The enemies consistency is worrying.`)
-
+                        console.log(pHealth)
+                        
                         if (pHealth <= 0) {
                             console.log('Your champion Freyja ascends to Valhalla where she awaits an eternity of glorious battles and infitely full jugs of wine')
                             break;

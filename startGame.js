@@ -4,6 +4,7 @@
 const inquirer = require('inquirer')
 const enemyNameFunc = require('./utils/enemynameFunc')
 const fight = require('./utils/fight')
+const endGame = require('./utils/endGame')
 
 // player 
 let Freyja = 'Freyja'
@@ -28,8 +29,8 @@ function startGame () {
                         console.log(playerHealth)
                         if (i > 0) {
                             playerHealth += 10
-                            console.log('player health is ' + playerHealth )
 
+                            console.log('player health is ' + playerHealth )
                             console.log(`Your champion ${Freyja} has ${playerHealth} health points left! She will not be slain!`)
 
                             let nextFighter = enemyNames[i]
@@ -38,6 +39,7 @@ function startGame () {
                         } else if (i === 0) {
                             let nextFighter = enemyNames[i]
                             fight(nextFighter, playerHealth)
+                            console.log(playerHealth)
                         }
                     } else {
                         endGame(startGame)
